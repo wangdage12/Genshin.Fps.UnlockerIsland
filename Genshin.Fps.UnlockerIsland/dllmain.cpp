@@ -552,9 +552,9 @@ namespace Gui
 
         g_MenuWindow = CreateWindowExW(
             WS_EX_TOOLWINDOW,  // 工具窗口，不会出现在Alt+Tab中
-            wc.lpszClassName, 
+            wc.lpszClassName,
             L"Genshin FPS Unlocker",
-            WS_OVERLAPPEDWINDOW & ~WS_MAXIMIZEBOX,  // 禁用最大化按钮
+            WS_CAPTION | WS_SYSMENU,  // 仅显示标题栏和关闭按钮，禁用拖动
             100, 100, 800, 600, NULL, NULL, wc.hInstance, NULL);
 
         if (!g_MenuWindow)
@@ -660,7 +660,7 @@ namespace Gui
                 ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiCond_FirstUseEver);
                 ImGui::SetNextWindowSize(ImVec2(800, 600), ImGuiCond_FirstUseEver);
 
-                ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar;
+                ImGuiWindowFlags window_flags = ImGuiWindowFlags_MenuBar | ImGuiWindowFlags_NoMove;
 
                 ImGui::Begin("Genshin FPS Unlocker", nullptr, window_flags);
                 {
